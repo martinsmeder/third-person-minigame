@@ -808,11 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803b00b1c55094e499a99684ddbd9b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Title: Over the Shoulder with Aim Mode
-  m_Description: "Turn this window off by removing the script on Main Camera\n\nUse
-    the arrow keys to move the character.  \nPress the Left Ctrl key to go into Aim
-    mode.\n"
-  mShowingHelpWindow: 1
 --- !u!1 &1834630889
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,10 +922,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4921246272369262}
-  - component: {fileID: 95487102469724584}
   - component: {fileID: 54563483927136738}
   - component: {fileID: 114640799850644754}
-  - component: {fileID: 136696896165574152}
   m_Layer: 0
   m_Name: 3rdPersonController
   m_TagString: Player
@@ -981,27 +974,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!95 &95487102469724584
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967616610772914}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8837f192a88abd84da9f1907d0b6bdb4, type: 3}
-  m_Controller: {fileID: 9100000, guid: 7a9f599c49797434485c0e1d9e99f200, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &114640799850644754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,31 +989,9 @@ MonoBehaviour:
   useCharacterForward: 0
   lockToCameraForward: 0
   turnSpeed: 10
+  speed: 20
   sprintJoystick: 332
   sprintKeyboard: 32
---- !u!136 &136696896165574152
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967616610772914}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.31
-  m_Height: 1.76
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
