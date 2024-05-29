@@ -27,10 +27,6 @@ public class CharacterMovement : MonoBehaviour
         input = movementValue.Get<Vector2>();
     }
 
-    void OnLook(InputValue lookValue)
-    {
-        // ???
-    }
 
     void FixedUpdate()
     {

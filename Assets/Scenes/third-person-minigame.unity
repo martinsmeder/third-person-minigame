@@ -484,7 +484,7 @@ Transform:
   m_GameObject: {fileID: 1196353158}
   serializedVersion: 2
   m_LocalRotation: {x: 0.32326594, y: 0, z: 0, w: 0.94630814}
-  m_LocalPosition: {x: 0.40963477, y: 2.719136, z: -1.940955}
+  m_LocalPosition: {x: 0.40641564, y: 2.719136, z: -1.940955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 37.7211
     m_SpeedMode: 1
-    m_MaxSpeed: 2
+    m_MaxSpeed: 0.5
     m_AccelTime: 0.2
     m_DecelTime: 0.2
     m_InputAxisName: Mouse Y
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 5
+    m_MaxSpeed: 1
     m_AccelTime: 0.2
     m_DecelTime: 0.2
     m_InputAxisName: Mouse X
@@ -773,7 +773,7 @@ Transform:
   m_GameObject: {fileID: 1787124812}
   serializedVersion: 2
   m_LocalRotation: {x: 0.32326594, y: 0, z: 0, w: 0.94630814}
-  m_LocalPosition: {x: 0.40963477, y: 2.719136, z: -1.940955}
+  m_LocalPosition: {x: 0.40641564, y: 2.719136, z: -1.940955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
