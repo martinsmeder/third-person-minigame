@@ -9,9 +9,8 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 20f;
 
     private float turnSpeedMultiplier;
-    private float direction = 0f;
-    private Vector3 targetDirection;
     private Vector2 input;
+    private Vector3 targetDirection;
     private Quaternion freeRotation;
     private Camera mainCamera;
     private Rigidbody rb;
@@ -27,11 +26,10 @@ public class CharacterMovement : MonoBehaviour
         input = movementValue.Get<Vector2>();
     }
 
-
     void FixedUpdate()
     {
         // Calculate direction based on input
-        direction = input.magnitude;
+        float direction = input.magnitude;
 
         // Update target direction relative to the camera view
         UpdateTargetDirection();
@@ -50,9 +48,9 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * turnSpeedMultiplier * Time.deltaTime);
         }
 
-        // Move the character
-        Vector3 movement = targetDirection * speed * direction * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + movement);
+        // Move the character using AddForce
+        Vector3 movement = targetDirection * speed * direction;
+        rb.AddForce(movement * Time.deltaTime, ForceMode.Impulse);
     }
 
     public virtual void UpdateTargetDirection()
