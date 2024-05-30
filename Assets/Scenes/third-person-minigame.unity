@@ -1463,6 +1463,8 @@ MonoBehaviour:
   lockToCameraForward: 0
   turnSpeed: 10
   speed: 20
+  jumpVelocity: 30
+  jumpGravity: 5
 --- !u!114 &114640799850644755
 MonoBehaviour:
   m_ObjectHideFlags: 0

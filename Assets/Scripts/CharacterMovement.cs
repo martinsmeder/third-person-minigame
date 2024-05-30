@@ -7,9 +7,13 @@ public class CharacterMovement : MonoBehaviour
     public bool lockToCameraForward = false;
     public float turnSpeed = 10f;
     public float speed = 20f;
+    public float jumpVelocity = 30f;
+    public float jumpGravity = 5f; 
 
     private float turnSpeedMultiplier;
-    private Vector2 input;
+    private Vector2 moveInput;
+    private bool jumpInput;
+    private bool isJumping = false;
     private Vector3 targetDirection;
     private Quaternion freeRotation;
     private Camera mainCamera;
@@ -23,18 +27,23 @@ public class CharacterMovement : MonoBehaviour
 
     void OnMove(InputValue movementValue)
     {
-        input = movementValue.Get<Vector2>();
+        moveInput = movementValue.Get<Vector2>();
+    }
+
+    void OnJump(InputValue jumpValue)
+    {
+        jumpInput = jumpValue.isPressed;
     }
 
     void FixedUpdate()
     {
         // Calculate direction based on input
-        float direction = input.magnitude;
+        float direction = moveInput.magnitude;
 
         // Update target direction relative to the camera view
         UpdateTargetDirection();
 
-        if (input != Vector2.zero && targetDirection.magnitude > 0.1f)
+        if (moveInput != Vector2.zero && targetDirection.magnitude > 0.1f)
         {
             Vector3 lookDirection = targetDirection.normalized;
             freeRotation = Quaternion.LookRotation(lookDirection, transform.up);
@@ -51,6 +60,30 @@ public class CharacterMovement : MonoBehaviour
         // Move the character using AddForce
         Vector3 movement = targetDirection * speed * direction;
         rb.AddForce(movement * Time.deltaTime, ForceMode.Impulse);
+
+        // Apply custom gravity to player when jumping
+        if (isJumping)
+        {
+            rb.AddForce(Physics.gravity * (jumpGravity - 1) * rb.mass);
+        }
+    }
+
+    void Update()
+    {
+        if (jumpInput && !isJumping)
+        {
+            rb.AddForce(Vector3.up * jumpVelocity, ForceMode.Impulse);
+            isJumping = true;
+            jumpInput = false;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            isJumping = false;
+        }
     }
 
     public virtual void UpdateTargetDirection()
@@ -65,7 +98,7 @@ public class CharacterMovement : MonoBehaviour
             Vector3 right = mainCamera.transform.TransformDirection(Vector3.right);
 
             // Determine the direction the player will face based on input and the referenceTransform's right and forward directions
-            targetDirection = input.x * right + input.y * forward;
+            targetDirection = moveInput.x * right + moveInput.y * forward;
         }
         else
         {
@@ -75,7 +108,7 @@ public class CharacterMovement : MonoBehaviour
 
             // Get the right-facing direction of the referenceTransform
             Vector3 right = transform.TransformDirection(Vector3.right);
-            targetDirection = input.x * right + Mathf.Abs(input.y) * forward;
+            targetDirection = moveInput.x * right + Mathf.Abs(moveInput.y) * forward;
         }
     }
 }
