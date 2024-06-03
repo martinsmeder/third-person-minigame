@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class CharacterMovement : MonoBehaviour
 {
     public bool useCharacterForward = false;
     public bool lockToCameraForward = false;
     public float turnSpeed = 10f;
-    public float speed = 20f;
+    public float moveSpeed = 10f;
     public float jumpVelocity = 30f;
     public float jumpGravity = 5f;
 
+    private float speedIncrement = 5f;
+    private float incrementInterval = 5f;
     private float turnSpeedMultiplier;
     private Vector2 moveInput;
     private bool jumpInput;
@@ -23,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
     {
         mainCamera = Camera.main; // Get and store main camera 
         rb = GetComponent<Rigidbody>(); // Get and store player's rigidbody 
+        StartCoroutine(IncreaseSpeedOverTime()); // Start the coroutine to increase speed over time
     }
 
     void OnMove(InputValue movementValue)
@@ -122,7 +126,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveCharacter()
     {
-        Vector3 movement = targetDirection * speed * moveInput.magnitude; // Create movement vector
+        Vector3 movement = targetDirection * moveSpeed * moveInput.magnitude; // Create movement vector
         rb.AddForce(movement * Time.deltaTime, ForceMode.Impulse); // Apply force to rigidbody 
     }
 
@@ -143,5 +147,14 @@ public class CharacterMovement : MonoBehaviour
         }
 
         jumpInput = false; // Reset jump input
+    }
+
+    private IEnumerator IncreaseSpeedOverTime()
+    {
+        while (true) // Infinite loop to keep the coroutine running
+        {
+            yield return new WaitForSeconds(incrementInterval); // Wait for the specified interval
+            moveSpeed += speedIncrement; // Increase the movement speed
+        }
     }
 }
