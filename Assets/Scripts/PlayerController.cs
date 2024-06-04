@@ -2,7 +2,7 @@
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class CharacterMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public bool useCharacterForward = false;
     public bool lockToCameraForward = false;
