@@ -1,24 +1,32 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     public Transform player;
     public Transform enemyParent;
+    public TextMeshProUGUI countText;
 
     private GameObject[] enemies;
-    private int secondsCounter;
+    private int count;
 
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        StartCoroutine(CountSeconds()); 
+        StartCoroutine(CountSeconds());
+        SetCountText();
     }
 
     void Update()
     {
         CheckCollisions();
         CheckOutOfBounds();
+    }
+
+    void SetCountText()
+    {
+        countText.text = count.ToString();
     }
 
     private void CheckCollisions()
@@ -47,10 +55,10 @@ public class GameController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1); // Wait for 1 second
-            secondsCounter++; // Increment the counter
-            Debug.Log("Time: " + secondsCounter);
+            count++; // Increment the counter
+            SetCountText();
 
-            if (secondsCounter == 60)
+            if (count == 60)
             {
                 Debug.Log("You beat the game!");
             }
