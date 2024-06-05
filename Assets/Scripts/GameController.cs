@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public Transform player;
     public Transform enemyParent;
     public TextMeshProUGUI countText;
+    public GameObject looseTextObject;
 
     private GameObject[] enemies;
     private int count;
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        looseTextObject.SetActive(false);   
         StartCoroutine(CountSeconds());
         SetCountText();
     }
@@ -37,7 +39,7 @@ public class GameController : MonoBehaviour
             float distance = Vector3.Distance(player.position, enemy.transform.position);
             if (distance < 1)
             {
-                Debug.Log("Game over!");
+                looseTextObject.SetActive(true);
             }
         }
     }
@@ -46,7 +48,7 @@ public class GameController : MonoBehaviour
     {
         if (player.position.y < 0) // Check if player is beneath the ground 
         {
-            Debug.Log("Game over!");
+            looseTextObject.SetActive(true);
         }
     }
 
