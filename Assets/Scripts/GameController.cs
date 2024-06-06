@@ -1,7 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -14,14 +13,14 @@ public class GameController : MonoBehaviour
     private GameObject[] enemies;
     private int count;
     private bool gameOver;
-
+    private bool isCursorLocked = true;
 
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         looseTextObject.SetActive(false);
         winTextObject.SetActive(false);
-        
+
         StartCoroutine(CountSeconds());
         SetCountText();
     }
@@ -32,6 +31,13 @@ public class GameController : MonoBehaviour
 
         CheckCollisions();
         CheckOutOfBounds();
+
+        // Toggle cursor locking and visibility on Escape key press
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isCursorLocked = !isCursorLocked;
+            UpdateCursorState();
+        }
     }
 
     void SetCountText()
@@ -90,5 +96,22 @@ public class GameController : MonoBehaviour
         }
 
         Time.timeScale = 0f; // Pause the game
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void UpdateCursorState()
+    {
+        if (isCursorLocked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }
