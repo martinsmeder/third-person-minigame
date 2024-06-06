@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/third-person-minigame.unity
+    guid: a04cf6ca22a95684e9283ab039f68c66
   m_configObjects: {}
