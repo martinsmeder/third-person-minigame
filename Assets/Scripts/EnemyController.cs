@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private IEnumerator IncreaseSpeedOverTime()
+    public IEnumerator IncreaseSpeedOverTime()
     {
         while (true) // Infinite loop to keep the coroutine running
         {

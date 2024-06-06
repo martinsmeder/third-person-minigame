@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main; // Get and store main camera 
-        rb = GetComponent<Rigidbody>(); // Get and store player's rigidbody 
+        rb = GetComponent<Rigidbody>(); // Get and store player's rigidbody
         StartCoroutine(IncreaseSpeedOverTime()); // Start the coroutine to increase speed over time
     }
 
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         jumpInput = false; // Reset jump input
     }
 
-    private IEnumerator IncreaseSpeedOverTime()
+    public IEnumerator IncreaseSpeedOverTime()
     {
         while (true) // Infinite loop to keep the coroutine running
         {
