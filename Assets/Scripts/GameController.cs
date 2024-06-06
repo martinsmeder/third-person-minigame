@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameController : MonoBehaviour
     public Transform enemyParent;
     public TextMeshProUGUI countText;
     public GameObject looseTextObject;
+    public GameObject winTextObject;
 
     private GameObject[] enemies;
     private int count;
@@ -16,6 +18,7 @@ public class GameController : MonoBehaviour
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         looseTextObject.SetActive(false);   
+        winTextObject.SetActive(false);
         StartCoroutine(CountSeconds());
         SetCountText();
     }
@@ -60,9 +63,9 @@ public class GameController : MonoBehaviour
             count++; // Increment the counter
             SetCountText();
 
-            if (count == 60)
+            if (count == 90)
             {
-                Debug.Log("You beat the game!");
+                winTextObject.SetActive(true);
             }
         }
     }
