@@ -73,3 +73,9 @@ crashlytics-build.properties
 
 # Visual Studio config file
 .vsconfig
+
+# Build/Publish related stuff
+connectwebgl.zip
+webgl_sharing/
+WebGL Builds/
+
