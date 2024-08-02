@@ -1,6 +1,6 @@
 # Third Person Minigame
 
-Demo: https://play.unity.com/p/third-person-minigame
+[Demo](https://play.unity.com/en/games/90aa6cf6-e219-4536-baed-48c793c67faa/third-person-minigame)
 
 A simple third person game built with Unity. 
 
